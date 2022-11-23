@@ -36,8 +36,8 @@ window.answers = () => {
 
 
     // #5 Write a for-loop that uses console.log to print out the numbers from 1 to 10 (inclusive) in descending order
-    for (i=0;i<=9;i++){
-        console.log(10-i) //iterating forward in i and backwards from 10
+    for (i=10;i>0;i--){
+        console.log(i) //iterating forward in i and backwards from 10
     }
 
 
