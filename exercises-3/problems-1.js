@@ -7,8 +7,31 @@
 */
 
 function isSortedAndHow(nums) {
-    
+    len = nums.length
+    let count = 0
+    for (i=1;i<len;i++){
+        if(nums[i-1]>nums[i]){
+            count+= 1
+            console.log(count)
+            if (count==(len - 1)){
+                return "yes, descending"
+            }
+            
+        }
+        if(nums[i-1]<nums[i]){
+            count+= -1
+            if (count==(1-len)){
+                return "yes, ascending"
+            }
+            
+        }
+    }
+    if (count > (1-len) && count < (len-1)){
+        return "no"
+        }
 }
+
+
 
 // Do not modify this code
 window.solutions = window.solutions || {}
