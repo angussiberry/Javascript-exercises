@@ -7,9 +7,17 @@
     You should return 6
 */
 
-function findUnique(input) {
-    
+function findUnique(input){
+output = []
+for(let i=0; i<input.length; i++){
+    if(input.indexOf(input[i]) == input.lastIndexOf(input[i])){ //indexOf () finds first instance of of a given element in an array, lastIndexOf finds the last
+        return input[i]
+    }
 }
+
+}
+    
+
 
 // Do not modify this code
 window.solutions = window.solutions || {}
