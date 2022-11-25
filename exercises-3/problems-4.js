@@ -10,6 +10,22 @@
 */
 
 function findEvenIndex(arr) {
+    for (i=0;i<arr.length;i++){
+        let left = 0
+        let right = 0
+        for(j=0; j<i;j++){
+            left += arr[j]
+        }
+        for (k=i+1;k<arr.length;k++){
+            right += arr[k]
+        }
+        if(right == left){
+            return i
+        }
+
+    }
+    
+    return -1
     
 }
 
