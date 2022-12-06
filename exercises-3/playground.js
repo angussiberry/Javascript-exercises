@@ -1,73 +1,35 @@
 /*
-    Take every 2nd char from the string, then the other chars that are not every 2nd char, and concat them as new String.
-    Do this n times
+    You will be given a sequence of letters.
+    When an uppercase and lowercase of the same letter touch, they destroy each other.
+    After they have been removed, the process continues until there are no more letters reacting
 
     For example:
-    "abababab", 0 => "abababab" (no change as no iterations!)
-    "abababab", 1 => "bbbbaaaa"
-    "abababab", 2 => "bbaabbaa"
-    
+    "xYyZZX" => "xZZX"
+    "aBbA" => ""
 */
 
-function encrypt(text, n) {
-    input = text.split("")
-    copy = input.map((x) => x)
-    for(i=0; i<n; i++){
-        let char2pusher = []
-        let char1pusher = []
-        for (j=0; j<text.length; j++){
-            if (j % 2 == 0){
-                char2pusher.push(copy[j])
-            }
-            if (j % 2 !== 0){
-                char1pusher.push(copy[j])
-            }
+function checkCharUpper(letter) {
+    return letter == letter.toUpperCase();
+};
 
+function react(sequence) {
+    og = sequence
+    arr = sequence.toUpperCase().split("")
+    copy = arr.map((x) => x)
+    sol = []
+    t=1
+    for (i = 1; i < sequence.length; i++) {
+        if (arr[i-1] === arr[i] && checkCharUpper(sequence[i - 1]) == true && checkCharUpper(sequence[i]) == false){
+            i+=2
+        } else if  (arr[i-1] === arr[i] && checkCharUpper(sequence[i - 1]) == false && checkCharUpper(sequence[i]) == true){
+             i+=2
+        } else {
+            sol.push(sequence[i-1])
+            sol.push(sequence[i])
         }
-    copy = char1pusher.concat(char2pusher)
+        console.log(sol)
     }
-    return copy.join("")
+    return sol.join("")
 }
 
-
-
-
-/*
-    Now write a function to decrypt the encrypted strings
-
-    For example:
-    "abababab", 0 => "abababab" (no change as no iterations!)
-    "bbbbaaaa", 1 => "abababab"
-    "bbaabbaa", 2 => "abababab"
-*/
-
-function decrypt(cipherText, n) {
-    input = cipherText.split("")
-    copy = input.map((x) => x)
-    l = input.length
-    if (l % 2 !== 0){ 
-        l -= 1 
-    }
-    for (j=0;j<n;j++){
-
-
-        left = copy.slice(0,l/2)
-        var edit = left.map((x) => x)
-        right = copy.slice(l/2)
-        console.log(right)
-        console.log(left)
-        let t = 0
-        
-        for(i=0;i<l+1;i++){
-            edit.splice(i,0,right[t])
-            i++
-            t++
-            console.log(edit)
-            }
-
-    copy = edit.map((x) => x)
-    }
-    return copy.join("")
-}
- 
-console.log(decrypt("hsi  etTi sats!",1))
+console.log(react("EaAbBCceDdFGfg"))
