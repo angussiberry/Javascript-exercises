@@ -10,7 +10,26 @@
 */
 
 function encrypt(text, n) {
-    
+    if (text == null || n == null){
+        return null
+    }
+    input = text.split("")
+    copy = input.map((x) => x)
+    for(i=0; i<n; i++){
+        let char2pusher = []
+        let char1pusher = []
+        for (j=0; j<text.length; j++){
+            if (j % 2 == 0){
+                char2pusher.push(copy[j])
+            }
+            if (j % 2 !== 0){
+                char1pusher.push(copy[j])
+            }
+
+        }
+    copy = char1pusher.concat(char2pusher)
+    }
+    return copy.join("")
 }
 
 /*
@@ -23,7 +42,35 @@ function encrypt(text, n) {
 */
 
 function decrypt(cipherText, n) {
-    
+    if (cipherText == null || n == null){
+        return null
+    }
+    input = cipherText.split("")
+    copy = input.map((x) => x)
+    l = input.length
+    if (l % 2 !== 0){ 
+        l -= 1 
+    }
+    for (j=0;j<n;j++){
+
+
+        left = copy.slice(0,l/2)
+        var edit = left.map((x) => x)
+        right = copy.slice(l/2)
+        console.log(right)
+        console.log(left)
+        let t = 0
+        
+        for(i=0;i<l+1;i++){
+            edit.splice(i,0,right[t])
+            i++
+            t++
+            console.log(edit)
+            }
+
+    copy = edit.map((x) => x)
+    }
+    return copy.join("")
 }
 
 // Do not modify this code

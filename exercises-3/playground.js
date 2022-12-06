@@ -1,33 +1,73 @@
 /*
-    Write a function which will reverse the vowels in a string.
-    Any characters which are not vowels should remain in their original position,
-    i.e only swap pairs of vowels - but they may not be at matching indexes!
+    Take every 2nd char from the string, then the other chars that are not every 2nd char, and concat them as new String.
+    Do this n times
 
     For example:
-    "Tomatoes" => "Temotaos"
-
-    Ok so look for vowels, make copy of array out - if vowel in array - get index - if firstIndex[vowel] != lastIndex[vowel],
-    first = out[first], last = out[last] then out[first] = last to swap them and change vowel in original array with 'x'
+    "abababab", 0 => "abababab" (no change as no iterations!)
+    "abababab", 1 => "bbbbaaaa"
+    "abababab", 2 => "bbaabbaa"
+    
 */
 
-function vowelsOnly(str) {
-    return  str.match(/[aeiou]/ig, '');
-    }
-    
-function reverseVowels(reverseMe) {
-    vowels = vowelsOnly(reverseMe)
-    console.log(vowels)
-    rev = vowels.map((x) => x).reverse()
-    console.log(rev)
-    out = reverseMe.split("")
-    co = out.map((x) => x)
-    numberVowels = vowels.length
-    for(i=0;i<numberVowels ;i++){
-        index = out.indexOf(vowels[i])
-        co[index] = rev[i] 
-        out[index]  = ""
+function encrypt(text, n) {
+    input = text.split("")
+    copy = input.map((x) => x)
+    for(i=0; i<n; i++){
+        let char2pusher = []
+        let char1pusher = []
+        for (j=0; j<text.length; j++){
+            if (j % 2 == 0){
+                char2pusher.push(copy[j])
+            }
+            if (j % 2 !== 0){
+                char1pusher.push(copy[j])
+            }
+
         }
-    return co.join('')
+    copy = char1pusher.concat(char2pusher)
+    }
+    return copy.join("")
 }
-console.log(reverseVowels("Hello!"))
-console.log(reverseVowels("Reverse Vowels In A String"))
+
+
+
+
+/*
+    Now write a function to decrypt the encrypted strings
+
+    For example:
+    "abababab", 0 => "abababab" (no change as no iterations!)
+    "bbbbaaaa", 1 => "abababab"
+    "bbaabbaa", 2 => "abababab"
+*/
+
+function decrypt(cipherText, n) {
+    input = cipherText.split("")
+    copy = input.map((x) => x)
+    l = input.length
+    if (l % 2 !== 0){ 
+        l -= 1 
+    }
+    for (j=0;j<n;j++){
+
+
+        left = copy.slice(0,l/2)
+        var edit = left.map((x) => x)
+        right = copy.slice(l/2)
+        console.log(right)
+        console.log(left)
+        let t = 0
+        
+        for(i=0;i<l+1;i++){
+            edit.splice(i,0,right[t])
+            i++
+            t++
+            console.log(edit)
+            }
+
+    copy = edit.map((x) => x)
+    }
+    return copy.join("")
+}
+ 
+console.log(decrypt("hsi  etTi sats!",1))
