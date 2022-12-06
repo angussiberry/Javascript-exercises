@@ -19,7 +19,7 @@ function reverseVowels(reverseMe) {
     rev = vowels.map((x) => x).reverse() //make a copy og the vowels and flip
     copy = reverseMe.split("") //create editable copy of letters in array
     output = copy.map((x) => x) //create a copy of a the array for the output
-    for(i=0;i<vowels.lenght ;i++){ //loop over every vowel instance
+    for(i=0;i<vowels.length ;i++){ //loop over every vowel instance
         index = copy.indexOf(vowels[i]) //find first instance of vowel
         output[index] = rev[i] //assign last vowel in the first vowel position
         copy[index]  = "" //incase of multiple instances in original of the same vowel clear ith vowel in copy
