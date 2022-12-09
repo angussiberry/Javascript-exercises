@@ -6,6 +6,8 @@
     For example:
     "xYyZZX" => "xZZX"
     "aBbA" => ""
+
+    Ok lets go again -> Scan along i, if character the same check case, if succesful, create new array from i+2 onwards, repeat until i reaches length of original  
 */
 
 function checkCharUpper(letter) {
@@ -13,23 +15,36 @@ function checkCharUpper(letter) {
 };
 
 function react(sequence) {
-    og = sequence
-    arr = sequence.toUpperCase().split("")
-    copy = arr.map((x) => x)
-    sol = []
+    newString = `${sequence}`
+    lowerCase = sequence.split("")
+    og = lowerCase.map((x) => x)
+    arr = newString.toUpperCase().split("")
+    sol = [] 
     t=1
-    for (i = 1; i < sequence.length; i++) {
-        if (arr[i-1] === arr[i] && checkCharUpper(sequence[i - 1]) == true && checkCharUpper(sequence[i]) == false){
-            i+=2
-        } else if  (arr[i-1] === arr[i] && checkCharUpper(sequence[i - 1]) == false && checkCharUpper(sequence[i]) == true){
-             i+=2
-        } else {
-            sol.push(sequence[i-1])
-            sol.push(sequence[i])
+    a = sequence.length
+for (i = 1; i < a; i++) {
+        console.log(og)
+        if (arr[i-1] == arr[i] && checkCharUpper(og[i - 1]) == true && checkCharUpper(og[i]) == false){
+            og.splice(i-1,1)
+            arr.splice(i-1,1)
+            og.splice(i-1,1)
+            arr.splice(i-1,1)
+            i = 0
+            console.log('it in 1')
+            a -= 2
+            continue
+        } else if (arr[i-1] == arr[i] && checkCharUpper(og[i - 1]) == false && checkCharUpper(og[i]) == true){
+            og.splice(i-1,1)
+            arr.splice(i-1,1)
+            og.splice(i-1,1)
+            arr.splice(i-1,1)
+            i = 0
+            console.log('its in 2')
+            a -= 2
+            continue
         }
-        console.log(sol)
     }
-    return sol.join("")
+    return og.join("")
 }
 
 console.log(react("EaAbBCceDdFGfg"))
