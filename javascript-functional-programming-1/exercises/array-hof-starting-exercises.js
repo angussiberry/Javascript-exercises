@@ -4,15 +4,16 @@ const someAcademites = ['Luca', 'Oscar', 'Wiggins', 'Gatsby']
 
 // Lets use forEach() to iterate the Academites
 
-someAcademites.TODO
+someAcademites.forEach((name) => console.log(`Hello my name is ${name}`))
+
 
 // Lets use map() to shout out a HELLO LUCA to each Academite
-const shoutOut = "TODO"
+const shoutOut = someAcademites.map((name) => ` HELLO ${name}`)
 console.log(`Shoutout is ${shoutOut}`)
 
 // Lets use filter to remove Luca as she's been naughty today
 
-const filtered = "TODO"
+const filtered = someAcademites.filter((name) => name !== "Luca")
 console.log(`Filtered names are ${filtered}`)
 
 // Here are some Academite ages (in months!)
@@ -24,14 +25,14 @@ const someAcademitesWithAges = [ // array of objects
     { name: "Gatsby", age: 56 }
 ]
 
-// Lets filter out all the young naughty dogs/academites!
+// Lets filter out all the young naughty dogs/academites
 // ..remove the ones younger than 12 months
-const above12Months = "TODO"
+const above12Months = someAcademitesWithAges.filter((obj) => (obj.age >= 12))
 console.log('Academites above 12 months:', above12Months)
 
 // Now lets filter the older academites out and then shout out the NAME of each, all in one go
 // ..we need some "method chaining" also called "functional composition"
-const filteredAndShouted = "TODO"
+const filteredAndShouted = someAcademitesWithAges.filter((obj) => obj.age <= 12).map((obj) => `HELLO ${obj.name}`)
 console.log(`Shouty Young Dawgs: ${filteredAndShouted}`)
 
 /*

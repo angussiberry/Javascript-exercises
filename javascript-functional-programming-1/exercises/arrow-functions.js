@@ -5,11 +5,14 @@
 
 function sayHello(firstName, lastName) {
     console.log(`sayHello: Hello ${firstName} ${lastName}`)
-}
+ }
+
+
+
 sayHello('Tom','Carabine')
 
 //TODO make hiEveryone()
-
+const hiEveryone = (firstName, lastName) => {console.log(`sayHello: Hello ${firstName} ${lastName}`)}
 hiEveryone('Tom','Carabine')
 
 
@@ -20,6 +23,6 @@ function loadsaMoney(myWages) {
 }
 
 //TODO make lotsofMoney()
-
+const lotsofMoney = (myWages) => myWages * 10
 const resultSum = lotsofMoney(300)
 console.log(`resultSum: ${resultSum}`)

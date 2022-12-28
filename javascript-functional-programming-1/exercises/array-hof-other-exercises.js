@@ -16,13 +16,13 @@ console.log(totalAge)
 
 // Sort the array by the names (alphabetically)
 // Make a separate sorting function then use it
-const sortByName = "TODO"
-// TODO
+const sortByName = someAcademitesWithAges.map((obj) => obj.name).sort()
+console.log(`${sortByName}`)
 
 // Sort the array by the reverse ages (so, oldest first)
 // Make a separate sorting function then use it
-const sortByAges = "TODO"
-// TODO
+const sortByAges = someAcademitesWithAges.map((obj)=> (obj.age)).sort((a,b) => b-a)
+console.log(`${sortByAges}`)
 
 
 // EOF

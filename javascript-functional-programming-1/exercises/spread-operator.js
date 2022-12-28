@@ -4,13 +4,14 @@
 // function helloAcademy (person1, person2, person3, person4) {
 //     console.log(`Hello Academy folks: ${person1} ${person2} ${person3} ${person4}`)
 // }
-const helloAcademy = "TODO"
+const helloAcademy = (person1, person2, person3, person4) => [person1, person2, person3, person4].join("")
 
 // An array of academy folks
 const academyFolks = ['Alice', 'Bob', 'Charles', 'Danielle'];
 
 // Call the function that says hello with an exploded array (spread it)
-//TODO
+answer = helloAcademy(...academyFolks)
+console.log(`Hello Academy folks: ${answer} `)
 
 // Add more academy folks into a new array in one line using the spread operator
 //TODO
